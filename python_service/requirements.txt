@@ -1,0 +1,12 @@
+--find-links https://download.pytorch.org/whl/torch_stable.html
+torch
+torchvision
+torchaudio
+pycocotools
+fastapi
+uvicorn
+ultralytics
+opencv-python
+python-multipart
+pillow
+numpy

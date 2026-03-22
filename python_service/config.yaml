@@ -1,0 +1,7 @@
+path: C:/Users/kalli/Desktop/olive_vision_project/olive_trees_dataset
+
+train: train/images
+val: val/images
+
+names:
+  0: olive_tree
