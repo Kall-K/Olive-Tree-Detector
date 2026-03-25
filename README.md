@@ -1,2 +1,3 @@
 ﻿# Olive-Tree-Detector
  in progress ...
+ The detection functionality is already implemented, and a web application interface is in development to make the tool easily accessible through a browser.
