@@ -2,11 +2,11 @@ from ultralytics import YOLO
 import cv2
 
 # 1. Load your trained YOLOv8 model
-model_path = "C:/Users/kalli/Desktop/olive_vision_project/runs/detect/train7/weights/best.pt"
+model_path = "python_service/runs/detect/train7/weights/best.pt"
 model = YOLO(model_path)
 
 # 2. Load the image you want to test
-image_path = r"olive_trees_dataset\test\image9.png"
+image_path = r"python_service/olive_trees_dataset\test\image9.png"
 image = cv2.imread(image_path)
 
 # 3. Run inference
@@ -27,6 +27,6 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 
 # 6. Optional: save the result
-output_path = "C:/Users/kalli/Desktop/olive_vision_project/result1.jpg"
+output_path = "python_service/result1.jpg"
 cv2.imwrite(output_path, image)
 print(f"Result saved to {output_path}")

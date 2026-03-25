@@ -4,8 +4,8 @@ import argparse
 
 parser = argparse.ArgumentParser()
 
-parser.add_argument("--coco_file", type=str, default="olive_trees_dataset/train/annotations/instances_default.json", help="Path to the COCO JSON file")
-parser.add_argument("--labels_file", type=str, default="olive_trees_dataset/train/labels", help="Path to the labels directory")
+parser.add_argument("--coco_file", type=str, default="python_service/olive_trees_dataset/train/annotations/instances_default.json", help="Path to the COCO JSON file")
+parser.add_argument("--labels_file", type=str, default="python_service/olive_trees_dataset/train/labels", help="Path to the labels directory")
 
 args = parser.parse_args()
 coco_file = args.coco_file
