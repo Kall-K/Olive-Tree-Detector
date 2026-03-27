@@ -5,6 +5,7 @@ from ultralytics import YOLO
 import shutil
 import os
 import uuid
+import cv2
 
 app = FastAPI()
 
@@ -37,12 +38,12 @@ async def detect(image: UploadFile = File(...)):
     with open(input_path, "wb") as buffer:
         shutil.copyfileobj(image.file, buffer)
 
-    # Run YOLO detection
-    results = model.predict(input_path)
+    img = cv2.imread(input_path)
+    results = model.predict(img)
 
     # Save annotated result
     annotated = results[0].plot()
-    import cv2
+
     cv2.imwrite(output_path, annotated)
 
     # Count detected trees
