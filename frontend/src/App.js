@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:5000";
+
 function App() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [resultImage, setResultImage] = useState(null);
+  const [resultCount, setResultCount] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);
     setResultImage(null);
+    setResultCount(null);
   };
 
   const handleUpload = async () => {
@@ -22,18 +26,22 @@ function App() {
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:5000/upload", {
+      const response = await fetch(`${API_BASE_URL}/detect`, {
         method: "POST",
         body: formData,
       });
 
       const data = await response.json();
 
-      // backend should return image URL
-      setResultImage(data.image_url);
+      if (!response.ok) {
+        throw new Error(data.error || "Detection failed");
+      }
+
+      setResultImage(`${API_BASE_URL}${data.image_url}`);
+      setResultCount(data.count);
     } catch (error) {
       console.error(error);
-      alert("Upload failed");
+      alert(error.message || "Upload failed");
     }
 
     setLoading(false);
@@ -55,6 +63,8 @@ function App() {
       {resultImage && (
         <div>
           <h3>Result:</h3>
+          <p>Number of detected trees: {resultCount}</p>
+          <p>Detected olive trees are highlighted in the image below:</p>
           <img
             src={resultImage}
             alt="result"
