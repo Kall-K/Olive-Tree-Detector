@@ -1,8 +1,11 @@
 instructions.md
+
 python_service/venv
 python_service/instructions.md
+python_service/__pycache__
+
 frontend/instructions.md
 backend/instructions.md
-/python_service/__pycache__
+
 /backend/node_modules
 /frontend/node_modules

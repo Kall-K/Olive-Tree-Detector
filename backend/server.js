@@ -12,6 +12,9 @@ app.use(cors());
 // Docker service name (IMPORTANT)
 const PYTHON_SERVICE_URL = "http://python_service:8000/detect";
 
+// Serve uploaded images
+app.use("/uploads", express.static("uploads"));
+
 // Local temp upload folder
 const upload = multer({ dest: "uploads/" });
 
@@ -45,6 +48,13 @@ app.post("/detect", upload.single("image"), async (req, res) => {
 
     // Return Python response to frontend
     res.json(response.data);
+    // Python should return processed image path or file
+    const resultPath = response.data.result_path;
+
+    // Return URL to frontend
+    res.json({
+      image_url: `http://localhost:5000/${resultPath}`,
+    });
 
   } catch (error) {
     console.error("Error:", error.message);
