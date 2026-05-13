@@ -1,4 +1,4 @@
-﻿# OOlive Tree Detector
+﻿# Olive Tree Detector
 
 Web app for detecting olive trees in aerial images with a React frontend, a Node.js API gateway, and a Python YOLO inference service.
 
